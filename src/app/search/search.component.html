@@ -1,0 +1,6 @@
+<mat-form-field appearance="outline">
+    <input matInput placeholder="Buscar película" [(ngModel)]="searchQuery" (keyup.enter)="searchMovies()" />
+  </mat-form-field>
+  <button mat-raised-button color="primary" (click)="searchMovies()">Buscar</button>
+  <app-movie-list [movies]="movies" (pageChange)="onPageChange($event)"></app-movie-list>
+  

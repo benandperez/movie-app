@@ -1,0 +1,26 @@
+<mat-toolbar color="primary" class="custom-toolbar">
+    <div class="toolbar-items">
+        <button mat-button class="toolbar-button" routerLink="/trending">
+          <mat-icon>trending_up</mat-icon>
+          <span>Trending</span>
+        </button>
+    
+        <button mat-button class="toolbar-button" routerLink="/popular">
+          <mat-icon>thumb_up</mat-icon>
+          <span>Popular</span>
+        </button>
+    
+        <button mat-button class="toolbar-button" routerLink="/best-rated">
+          <mat-icon>star</mat-icon>
+          <span>Best Rated</span>
+        </button>
+      </div>
+      <div class="search-container">
+          <mat-form-field appearance="outline">
+            <mat-label>Buscar</mat-label>
+            <input matInput>
+            <mat-icon matSuffix>search</mat-icon>
+          </mat-form-field>
+
+      </div>
+  </mat-toolbar>

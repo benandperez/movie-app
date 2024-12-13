@@ -1,0 +1,9 @@
+<div *ngFor="let movie of trendingMovies" class="movie-card">
+    <img [src]="'https://image.tmdb.org/t/p/w200' + movie.poster_path" alt="{{ movie.title }}" />
+    <h3>{{ movie.title }}</h3>
+    <p>{{ movie.release_date | date: 'yyyy' }}</p>
+    <p>{{ movie.overview | slice: 0:100 }}...</p>
+    <button mat-button (click)="viewDetails(movie.id)">Ver detalles</button>
+  </div>
+  <mat-paginator [length]="totalResults" [pageSize]="10" (page)="changePage($event)"></mat-paginator>
+  
