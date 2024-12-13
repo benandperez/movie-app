@@ -1,11 +1,109 @@
-<div *ngIf="movie">
-    <h1>{{ movie.title }}</h1>
-    <img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" alt="{{ movie.title }}" />
-    <p>{{ movie.overview }}</p>
-    <p><strong>Duración:</strong> {{ movie.runtime }} minutos</p>
-    <p><strong>Calificación:</strong> {{ movie.vote_average }}</p>
-    <ul>
-      <li *ngFor="let cast of movie.cast">{{ cast.name }} como {{ cast.character }}</li>
-    </ul>
-  </div>
-  
+<div *ngIf="isLoading"
+    [style]="{'min-height':'75vh','min-width':'75vw'}" 
+    class="flex align-items-center justify-content-center"
+>
+    <app-loading *ngIf="isLoading"/>
+</div >
+
+<div *ngIf="movie" class="grid grid-nogutter gap-0 sm:gap-2 md:gap-5 flex justify-content-center align-content-start card pt-5">
+    
+    <div class="card flex justify-content-center col-12 sm:col-5 md:col-5">
+        <p-image
+            [src]="getImageUrl(movie)" 
+            [alt]="movie.original_title"
+            [ngClass]="{ 'censured-image': movie.adult }"
+            width="100%"
+            >
+        </p-image>
+    </div>
+    <div class="col-12 sm:col-6 md:col-6 lg:col-5 xl:col-4">
+        <p-card
+        [header]="movie.original_title"
+        >
+            <ng-template pTemplate="title">
+                <p  class="font-bold text-lg" *ngIf="movie.vote_average">{{movie.vote_average | number:'1.1-1'}}
+                    <i class="pi pi-star-fill text-yellow-400"></i>
+                </p>
+            </ng-template>
+
+            <ng-template pTemplate="subtitle">
+                <h3 *ngIf="movie.tagline !== ''" class="font-semibold text-lg text-indigo-100 font-italic pt-3 mb-0 pb-0">"
+                    {{movie.tagline}}"
+                </h3>
+            </ng-template>
+            
+            <ng-template pTemplate="content" >
+                <h4 class="text-base font-light pt-0 mt-0">{{movie.overview}}</h4>
+                <div class="card flex align-items-center gap-2 flex-wrap">
+                    <ng-container *ngFor="let genre of movie.genres">
+                        <p-chip [style]="{'background-color':'#CBD5E1'}">
+                            <div class="p-2 text-black-alpha-80 font-bold">
+                                {{genre.name}}
+                            </div>
+                        </p-chip>
+                    </ng-container>
+                    
+                </div>
+                
+                <p-divider [style]="{'border':'1px 1px white'}"></p-divider>
+                <p>
+                    <i class="fa-solid fa-language text-indigo-200 mr-2"></i>
+                    {{movie.original_language | uppercase}}
+                </p>
+                
+                <p-divider class="bg-gray-900"></p-divider>
+                <p>
+                    <i class="fa-regular fa-calendar-days text-indigo-200 mr-2"></i>
+                    {{movie.release_date | date}}
+                </p>
+                
+                <p-divider class="bg-gray-900"></p-divider>
+                <p>
+                    <i class="fa-solid fa-rocket text-indigo-200 mr-2"></i>
+                    Status: {{movie.status}}
+                </p>
+                
+                <p-divider class="text-indigo-200"></p-divider>
+                <p pTooltip="Duration" tooltipPosition="left">
+                    <i class="fa-regular fa-clock text-indigo-200 mr-2"></i>
+                    {{movie.runtime}} minutes
+                </p>
+                
+                <ng-container *ngIf="movie.production_companies.length>0">
+                    <p-divider class="text-indigo-200"/>
+                    <i class="fa-solid fa-industry text-indigo-200 mr-2"></i>
+                    <p
+                        pTooltip="Produced By" 
+                        tooltipPosition="left" 
+                        *ngFor="let companie of movie.production_companies;let last=last" 
+                        class="inline"
+                    >
+                        {{companie.name}}{{last? '':', '}}
+                    </p>
+                </ng-container>
+
+            </ng-template>
+            
+            <ng-template pTemplate="footer">
+
+                <div class="flex gap-2 justify-content-end">                    
+                  <ng-container>
+                    <button 
+                      pButton 
+                      severity="danger" 
+                      styleClass="p-button-warning" 
+                      routerLink="/" 
+                      class="flex align-items-center"
+                    >
+                      <span class="ml-2 mr-2 font-bold">Back To Home</span>
+                      <i class="fa-brands fa-imdb fa-2xl"></i>
+                    </button>
+                  </ng-container>
+                  
+                </div>
+            </ng-template>
+        
+        </p-card>
+    </div> 
+</div>
+

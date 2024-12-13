@@ -1,26 +1,32 @@
-<mat-toolbar color="primary" class="custom-toolbar">
-    <div class="toolbar-items">
-        <button mat-button class="toolbar-button" routerLink="/trending">
-          <mat-icon>trending_up</mat-icon>
-          <span>Trending</span>
-        </button>
+<p-menubar
+    [style]="{ 
+        'background-color': '#02021C', 
+        'border-radius': 0,
+        'padding':'0.5rem 1.3rem',
+        'display':'flex',
+        'justify-content':'space-between'
+    }"
+    [model]="items"
     
-        <button mat-button class="toolbar-button" routerLink="/popular">
-          <mat-icon>thumb_up</mat-icon>
-          <span>Popular</span>
-        </button>
-    
-        <button mat-button class="toolbar-button" routerLink="/best-rated">
-          <mat-icon>star</mat-icon>
-          <span>Best Rated</span>
-        </button>
-      </div>
-      <div class="search-container">
-          <mat-form-field appearance="outline">
-            <mat-label>Buscar</mat-label>
-            <input matInput>
-            <mat-icon matSuffix>search</mat-icon>
-          </mat-form-field>
+    class="navbar"
+>
+    <ng-template pTemplate="start">
+    </ng-template>
 
-      </div>
-  </mat-toolbar>
+    <ng-template pTemplate="end">
+        <span class="p-input-icon-right">
+            <i class="pi pi-search" (click)="onSearch($event)" [style]="{'cursor':'pointer'}"></i>
+            <input
+                id="search"
+                class="py-1"
+                type="text"
+                (keydown)="onSearch($event)"
+                placeholder="search"
+                type="text"
+                pInputText
+                [(ngModel)]="searchTerm"
+            />
+        </span>
+    </ng-template>
+
+</p-menubar>

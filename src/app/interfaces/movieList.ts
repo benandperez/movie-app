@@ -38,3 +38,36 @@ export enum MoviePageType  {
     popular     = "Popular",
     bestRated   = "Best Rated",
 }
+
+export const setPageTitle = (pageType: string) => {
+    
+    let title
+
+    if (pageType === 'trending') {
+        pageType = 'trending'
+      } else if (pageType === 'popular') {
+        pageType = 'popular'
+      } else if (pageType === 'best-rated') {
+        pageType = 'best-rated'
+      }
+      
+      return title
+}
+
+export const getPageType = (currentPath:any) => {
+
+    let pageType 
+    
+    if (currentPath === 'trending') {
+      pageType = MoviePageType.trending
+      // pageType = 'Trending'
+    } else if (currentPath === 'popular') {
+      // pageType = 'Popular'
+      pageType = MoviePageType.popular
+    } else if (currentPath === 'best-rated') {
+      // pageType = 'Best Rated'
+      pageType = MoviePageType.bestRated
+    }
+    
+    return pageType
+}

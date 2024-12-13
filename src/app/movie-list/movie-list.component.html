@@ -1,9 +1,45 @@
-<div *ngFor="let movie of trendingMovies" class="movie-card">
+    
+<div class="grid grid-nogutter justify-content-center pb-5">
+    <div class="col-12 text-center m-0 p-0" >
+        <h2>The list General</h2>
+    </div>
+    
+    <div  [style]="{'min-height':'20vh','min-width':'75vw'}" class="col-12 justify-content-center">
+        <app-carousel
+            [title]="'Trending Movies'"
+            [mediaArray]="trendingMovies"
+            *ngIf=" trendingMovies.length>0 && !isLoadingTrending"
+        />
+        <app-loading *ngIf="isLoadingTrending"/>
+    </div>
+    
+    <div  [style]="{'min-height':'20vh','min-width':'75vw'}" class="col-12 justify-content-center">
+        <app-carousel
+            [title]="'Popular Movies'"
+            [mediaArray]="popularMovies"
+            *ngIf=" popularMovies.length>0 && !isLoadingPopular"
+        />
+        <app-loading *ngIf="isLoadingPopular"/>
+    </div>
+    
+    <div  [style]="{'min-height':'20vh','min-width':'75vw'}" class="col-12 justify-content-center">
+        <app-carousel
+            [title]="'Top Rated Movies'"
+            [mediaArray]="topRatedMovies"
+            *ngIf=" topRatedMovies.length>0 && !isLoadingTopRated"
+        />
+        <app-loading *ngIf="isLoadingTopRated"/>
+    </div>
+    
+</div>
+
+
+<!-- <div *ngFor="let movie of trendingMovies" class="movie-card">
     <img [src]="'https://image.tmdb.org/t/p/w200' + movie.poster_path" alt="{{ movie.title }}" />
     <h3>{{ movie.title }}</h3>
     <p>{{ movie.release_date | date: 'yyyy' }}</p>
     <p>{{ movie.overview | slice: 0:100 }}...</p>
     <button mat-button (click)="viewDetails(movie.id)">Ver detalles</button>
   </div>
-  <mat-paginator [length]="totalResults" [pageSize]="10" (page)="changePage($event)"></mat-paginator>
+  <mat-paginator [length]="totalResults" [pageSize]="10" (page)="changePage($event)"></mat-paginator> -->
   

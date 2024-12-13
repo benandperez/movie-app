@@ -14,7 +14,18 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ToolBarComponent } from './resources/tool-bar/tool-bar.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatIconModule} from '@angular/material/icon'
+import {MatIconModule} from '@angular/material/icon';
+import { ButtonModule } from 'primeng/button';
+import { CarouselModule } from 'primeng/carousel';
+import { CarouselComponent } from './carousel/carousel.component';
+import { LoadingComponent } from './resources/loading/loading.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { ImageModule } from 'primeng/image';
+import { MenubarModule } from 'primeng/menubar';
+import { CardModule } from 'primeng/card';
+import { ChipModule } from 'primeng/chip';
+import { DividerModule } from 'primeng/divider';
+import { PageTypeGeneralComponent } from './page-type-general/page-type-general.component';
 
 
 @NgModule({
@@ -23,7 +34,10 @@ import {MatIconModule} from '@angular/material/icon'
     MovieListComponent,
     MovieDetailsComponent,
     SearchComponent,
-    ToolBarComponent
+    ToolBarComponent,
+    CarouselComponent,
+    LoadingComponent,
+    PageTypeGeneralComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +49,15 @@ import {MatIconModule} from '@angular/material/icon'
     FormsModule,
     HttpClientModule,
     MatToolbarModule,
-    MatIconModule
+    MatIconModule,
+    ButtonModule,
+    CarouselModule,
+    MatProgressSpinnerModule,
+    ImageModule,
+    MenubarModule,
+    CardModule,
+    ChipModule,
+    DividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { MovieAPIResponse } from '../../interfaces/movieList';
 import { MovieDetail } from '../../interfaces/movieDetail';
@@ -10,8 +10,19 @@ import { MovieDetail } from '../../interfaces/movieDetail';
 })
 export class MovieService {
 
+  constructor(private http: HttpClient) {}
+  
+
   private baseUrl = environment.apiBaseUrl
   private apiKey = environment.apiKey
+  
+  // BehaviorSubject para almacenar valor actual de variable y notificar a los observadores cuando cambie
+  private searchTermSubject: BehaviorSubject<string> = new BehaviorSubject<string>('');
+
+  // Observable expuesto para que los componentes puedan suscribirse a los cambios
+  public searchTerm$: Observable<string> = this.searchTermSubject.asObservable();
+
+  
 
 
   
@@ -19,7 +30,6 @@ export class MovieService {
     return new HttpHeaders().set('Authorization',this.apiKey)
   }
   
-  constructor(private http: HttpClient) {}
 
   getMovieDetails(movieId: number): Observable<any> {
     const params = new HttpParams().set('api_key', this.apiKey);
@@ -70,5 +80,9 @@ export class MovieService {
         } 
       }
     )
+  }
+
+  setSearchTerm(term: string) {
+    this.searchTermSubject.next(term);
   }
 }

@@ -24,8 +24,8 @@ export class MovieListComponent {
 
   ngOnInit(): void {
     this.getTrendingMovies()
-    // this.getPopularMovies()
-    // this.getTopRatedMovies()
+    this.getPopularMovies()
+    this.getTopRatedMovies()
   }
 
   getTrendingMovies () {

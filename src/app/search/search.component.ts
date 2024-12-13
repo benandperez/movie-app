@@ -14,7 +14,7 @@ export class SearchComponent {
   constructor(private movieService: MovieService) {}
 
   searchMovies(): void {
-    this.movieService.getTrendingMovies(this.currentPage).subscribe((data) => {
+    this.movieService.searchMoviesByQuery(this.searchQuery, this.currentPage).subscribe((data) => {
       this.movies = data.results;
     });
   }

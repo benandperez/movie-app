@@ -1,30 +1,8 @@
-.spacer {
-    flex: 1 1 auto;
-  }
-
-  .custom-toolbar {
-    background-color: #1a1a2e;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    padding: 0 16px;
-  }
-
-  .toolbar-items {
-    display: flex;
-    gap: 16px;
-  }
-
-  .toolbar-button {
-    color: white; /* Color del texto */
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background-color: transparent; /* Fondo transparente */
-    border: none; /* Asegura que no haya borde si lo hay por defecto */
-    padding: 0; /* Quita el padding si es necesario */
-  }
-  
-  .toolbar-button:hover {
-    background-color: rgba(255, 255, 255, 0.1); /* Efecto sutil al pasar el ratón */
-  }
+.navbar {
+    position: sticky; /* Fija la barra de navegación en la parte superior */
+    position: -webkit-sticky;  /*Needed for Safari browsers.*/
+    z-index: 10000;  /*se utiliza para controlar la posición en el eje Z (profundidad). This prevents elements to be seen through the toolbar.*/
+    top: 0;  /*Required for "position: sticky" to take effect.*/
+    border-radius: 0;
+    background-color: #02021C; 
+}
