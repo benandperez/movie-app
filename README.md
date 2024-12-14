@@ -7,6 +7,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 1. Clonar el repo y drle un npm install
 2. Se deja las credenciales en los environments para pruebas
 3. Rellenar las variables de entorno acorde al ambiente que van a correr
+4. En la primera vista se ve 3 parametros de busqueda de pelicula basica, arriba en el menu podemos ver el detallado de cada uno con su paginacion.
 
 ```
 
