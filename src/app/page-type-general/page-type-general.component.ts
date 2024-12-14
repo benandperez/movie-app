@@ -25,7 +25,7 @@ export class PageTypeGeneralComponent implements OnInit {
   public isLoading:boolean = true
   @Output() pageChange = new EventEmitter<number>();
   @Input() totalResults: number = 0;
-  public searchTerm: string = '';
+  public searchTerm: string = 'ninguno';
   
   constructor(
     private MovieService: MovieService,
