@@ -38,7 +38,13 @@
             [totalRecords]="totalRecords"
             (paginatorChangePage)="onChangePage($event)"
         /> -->
-        <mat-paginator [length]="totalResults" [pageSize]="totalRecords" (page)="changePage($event)"></mat-paginator>
+        <mat-paginator *ngIf="!viewPaginatorPrime" [length]="totalResults" [pageSize]="totalRecords" (page)="changePage($event)"></mat-paginator>
+        <app-paginator-prime *ngIf="viewPaginatorPrime"
+            [rows]="rows"
+            [first]="first"
+            [totalRecords]="totalRecords"
+            (paginatorChangePage)="onChangePagePrime($event)"
+        />
     </div>
     
 </div>

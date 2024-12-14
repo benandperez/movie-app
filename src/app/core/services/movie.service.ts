@@ -21,7 +21,13 @@ export class MovieService {
 
   // Observable expuesto para que los componentes puedan suscribirse a los cambios
   public searchTerm$: Observable<string> = this.searchTermSubject.asObservable();
+  setPaginatorProperties = (apiResponse:any) => {
 
+    //! NOTA: API moviedb LIMITA busqueda a 20 items x pagina con MAXIMO 500 paginas, luego de eso arroja error "Invalid page: Pages start at 1 and max at 500"
+    const totalRecords = apiResponse.total_results > 500*20 ? 500*20 : apiResponse.total_results 
+    const rows = 20 //! NOTA: 20 en duraceli para EVITAR problemas por inconsistencia nro de rows al cambiar de pagina (nro pages en paginator se vuelve loco)!
+    return {totalRecords, rows}
+}
   
 
 
@@ -81,6 +87,8 @@ export class MovieService {
       }
     )
   }
+
+  
 
   setSearchTerm(term: string) {
     this.searchTermSubject.next(term);

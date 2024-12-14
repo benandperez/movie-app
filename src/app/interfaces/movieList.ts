@@ -37,6 +37,7 @@ export enum MoviePageType  {
     trending    = "Trending",
     popular     = "Popular",
     bestRated   = "Best Rated",
+    search   = "Result Search",
 }
 
 export const setPageTitle = (pageType: string) => {
@@ -44,11 +45,13 @@ export const setPageTitle = (pageType: string) => {
     let title
 
     if (pageType === 'trending') {
-        pageType = 'trending'
+        title = 'trending'
       } else if (pageType === 'popular') {
-        pageType = 'popular'
+        title = 'popular'
       } else if (pageType === 'best-rated') {
-        pageType = 'best-rated'
+        title = 'best-rated'
+      } else if (pageType === 'Result Search') {
+        title = 'search'
       }
       
       return title
@@ -67,6 +70,9 @@ export const getPageType = (currentPath:any) => {
     } else if (currentPath === 'best-rated') {
       // pageType = 'Best Rated'
       pageType = MoviePageType.bestRated
+    } else if (currentPath === 'search') {
+      // pageType = 'Best Rated'
+      pageType = MoviePageType.search
     }
     
     return pageType

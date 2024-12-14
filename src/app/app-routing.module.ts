@@ -7,23 +7,12 @@ import { PageTypeGeneralComponent } from './page-type-general/page-type-general.
 
 const routes: Routes = [
   { path: '', component: MovieListComponent },
-  { path: 'search', component: SearchComponent },
+  { path: 'movies/search', component: PageTypeGeneralComponent, data: { pageType: 'search' } },
   { path: 'movie/:id', component: MovieDetailsComponent },
-  { 
-    path:'movies/trending', 
-    component:PageTypeGeneralComponent,
-    data: { pageType:'trending'} 
-  },
-  { 
-    path:'movies/popular', 
-    component:PageTypeGeneralComponent,
-    data: { pageType:'popular'} 
-  },
-  { 
-    path:'movies/best-rated', 
-    component:PageTypeGeneralComponent,
-    data: { pageType:'best-rated'} 
-  },
+  { path: 'movies/trending', component: PageTypeGeneralComponent, data: { pageType: 'trending' } },
+  { path: 'movies/popular', component: PageTypeGeneralComponent, data: { pageType: 'popular' } },
+  { path: 'movies/best-rated', component: PageTypeGeneralComponent, data: { pageType: 'best-rated' } },
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({

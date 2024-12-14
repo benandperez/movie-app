@@ -26,7 +26,8 @@ import { CardModule } from 'primeng/card';
 import { ChipModule } from 'primeng/chip';
 import { DividerModule } from 'primeng/divider';
 import { PageTypeGeneralComponent } from './page-type-general/page-type-general.component';
-
+import { PaginatorPrimeComponent } from './paginator-prime/paginator-prime.component';
+import { PaginatorModule } from 'primeng/paginator';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { PageTypeGeneralComponent } from './page-type-general/page-type-general.
     ToolBarComponent,
     CarouselComponent,
     LoadingComponent,
-    PageTypeGeneralComponent
+    PageTypeGeneralComponent,
+    PaginatorPrimeComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +59,8 @@ import { PageTypeGeneralComponent } from './page-type-general/page-type-general.
     MenubarModule,
     CardModule,
     ChipModule,
-    DividerModule
+    DividerModule,
+    PaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
