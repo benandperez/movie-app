@@ -142,6 +142,7 @@ export class PageTypeGeneralComponent implements OnInit {
 
   getImageUrl(item: any): string {
     if (item.poster_path===null) return '/assets/images/no_poster.png';
+    if (this.movies.length===0 && this.searchTerm!='') return '/assets/images/no_found.jpg';
     return 'https://image.tmdb.org/t/p/w500/' + item.poster_path;
   }
 

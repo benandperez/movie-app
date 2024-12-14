@@ -28,6 +28,7 @@ import { DividerModule } from 'primeng/divider';
 import { PageTypeGeneralComponent } from './page-type-general/page-type-general.component';
 import { PaginatorPrimeComponent } from './paginator-prime/paginator-prime.component';
 import { PaginatorModule } from 'primeng/paginator';
+import { MessagesModule } from 'primeng/messages';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { PaginatorModule } from 'primeng/paginator';
     CardModule,
     ChipModule,
     DividerModule,
-    PaginatorModule
+    PaginatorModule,
+    MessagesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

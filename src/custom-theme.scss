@@ -33,3 +33,9 @@ $movie-search-app-theme: mat.define-light-theme((
 // that you are using.
 @include mat.all-component-themes($movie-search-app-theme);
 
+@media (max-width: 430px) {
+  
+  .mat-mdc-paginator-container {
+      justify-content: center !important
+  }
+}

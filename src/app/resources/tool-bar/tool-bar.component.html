@@ -11,6 +11,12 @@
     class="navbar"
 >
     <ng-template pTemplate="start">
+        <div [routerLink]="['/']" [ngStyle]="{'cursor':'pointer'}" class="">
+            <i
+                class="fa-sharp fa-solid fa-film fa-2xl mr-2 pi pi-home" 
+                style="color: #929197;">
+            </i>
+        </div>
     </ng-template>
 
     <ng-template pTemplate="end">

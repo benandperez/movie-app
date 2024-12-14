@@ -7,12 +7,16 @@
     </div>
     
     <div  [style]="{'min-height':'75vh','min-width':'75vw'}" class="">
-        <div class="grid grid-nogutter sm:justify-content-center xs:justify-content-around gallery-container">
+        <div  class="grid grid-nogutter sm:justify-content-center xs:justify-content-around gallery-container">
             <div class="col-6 sm:col-3 md:col-3 lg:col-2 lg:m-1" *ngFor="let item of movies">
                 <div class="gallery-item" (click)="viewDetails(item)">
                         <div class="overlay-text-container">
                            <p class="overlay-text">
                                {{ item.title }}
+                           </p> 
+                           <br>
+                           <p class="overlay-text">
+                               {{item.release_date | date}}
                            </p> 
                         </div>
                         
@@ -27,17 +31,25 @@
                         </div>
                 </div>
             </div>
+
+            <div >
+                <p-messages *ngIf="movies.length === 0 && searchTerm != '' && isLoading === false"
+                        [value]="[{ severity: 'error', summary: 'Oops!', detail: 'No movies were found with the search params' }]"
+                        [enableService]="false"
+                    />
+                    
+                    <p-messages *ngIf="searchTerm === ''"
+                        [value]="[{ severity: 'warn', summary: 'Please', detail: 'Enter a search term and press ENTER' }]"
+                        [enableService]="false"
+                        [closable]="true"
+                    />
+            </div> 
+
         </div>
         <app-loading *ngIf="isLoading"/>
     </div>
 
     <div class="align-self-end col-12 sm:col-11 md:col-10 lg:col-6">
-        <!-- <shared-paginator
-            [rows]="rows"
-            [first]="first"
-            [totalRecords]="totalRecords"
-            (paginatorChangePage)="onChangePage($event)"
-        /> -->
         <mat-paginator *ngIf="!viewPaginatorPrime" [length]="totalResults" [pageSize]="totalRecords" (page)="changePage($event)"></mat-paginator>
         <app-paginator-prime *ngIf="viewPaginatorPrime"
             [rows]="rows"
